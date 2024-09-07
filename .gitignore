@@ -1,7 +1,8 @@
 node_modules/
 package-lock.json
 
-cypress/Cypress/
+cypress/Cypress/Cypress.exe
+cypress/Cypress/browser_v8_context_snapshot.bin
 cypress/videos/
 cypress/screenshots/
 cypress/fixtures/
