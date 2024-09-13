@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 
 export function register(email, password, name, lastName) {
     const randomName = name || faker.person.firstName();
-    const randomLastName = lastName || faker.person.lastName(false);
+    const randomLastName = (lastName || faker.person.lastName()).split('-')[0]
     const randomEmail = email || faker.internet.email();
     const randomPassword = password || faker.internet.password(12, false, /[a-zA-Z0-9!@#$%^&*]/);
     const randomReEnterPassword = randomPassword;
