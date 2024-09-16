@@ -4,10 +4,14 @@
   "main": "index.js",
   "devDependencies": {
     "@faker-js/faker": "^9.0.0",
-    "cypress": "^13.14.2"
+    "cypress": "^13.14.2",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "mochawesome": "^7.1.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:site1": "cypress run --config-file cypress.config.js --spec 'cypress/e2e/mochawesome-reporter/addCarAndFuelExpense.cy.js'",
+  "test:site2": "cypress run --config-file cypress.config2.js --spec 'cypress/e2e/mochawesome-reporter/addCarAndFuelExpense.cy.js'",
+  "test:both": "npm run test:site1 && npm run test:site2"
   },
   "author": "",
   "license": "ISC",
