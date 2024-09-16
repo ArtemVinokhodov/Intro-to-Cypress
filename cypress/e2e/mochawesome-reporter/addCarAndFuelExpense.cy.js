@@ -1,35 +1,42 @@
-import GaragePage from '../mochawesome-reporter/GaragePage';
-import ExpensesPage from '../mochawesome-reporter/FuelExpensesPage';
+import GaragePage from '../../../page/page-objects/POM/GaragePage';
+import FuelExpensesPage from '../../../page/page-objects/POM/FuelExpensesPage';
+import { login } from '../../../page/page-objects/POM/login';
 
-describe('Test Adding Car and Fuel Expense', () => {
-    before(() => {
+describe('Test Adding Car', () => {
+
+    beforeEach(() => {
         cy.visit('/', {
             auth: {
                 username: Cypress.env('user').email,
                 password: Cypress.env('user').password,
             },
         });
-
-        cy.get('button').contains('Guest log in').click();
     });
 
-    it.only('should add a new car and fuel expense', () => {
+    it('should add a new car', () => {
+        login('12345asd@gmail.com', 'Aaa123aaa');
         const carDetails = {
             brand: 'Ford',
             model: 'Focus',
             mileage: '500'
         };
-        
-        GaragePage.visit();
-        GaragePage.addCar(carDetails);
 
+        GaragePage.addCar(carDetails);
+        cy.get('#userNavDropdown').click();
+        cy.get('button').contains('Logout').click();
+    });
+
+
+    it('should add fuel expense', () => {
+        login('12345asd@gmail.com', 'Aaa123aaa');
         const expenseDetails = {
             mileage: '10',
             liters: '50',
             totalCost: '1.20'
         };
 
-        ExpensesPage.visit();
-        ExpensesPage.addFuelExpense(expenseDetails);
+        FuelExpensesPage.addFuelExpense(expenseDetails);
+        cy.get('#userNavDropdown').click();
+        cy.get('button').contains('Logout').click();
     });
 });
