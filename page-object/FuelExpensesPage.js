@@ -4,7 +4,7 @@ class FuelExpensesPage {
   }
 
   get addExpenseButton() {
-    return cy.get('button').contains('Add an expense');
+    return cy.get('.modal-title').contains('Add an expense');
   }
 
   get mileageInput() {
@@ -29,6 +29,7 @@ class FuelExpensesPage {
 
   addFuelExpense(expenseDetails) {
     this.fuelExpensesLink.click();
+    this.addExpenseButton.click();
     this.mileageInput.type(expenseDetails.mileage);
     this.litersInput.type(expenseDetails.liters);
     this.totalCostInput.type(expenseDetails.totalCost);

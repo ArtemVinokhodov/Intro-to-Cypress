@@ -1,8 +1,8 @@
-import GaragePage from '../../../page/page-objects/POM/GaragePage';
-import FuelExpensesPage from '../../../page/page-objects/POM/FuelExpensesPage';
-import { login } from '../../../page/page-objects/POM/login';
+import GaragePage from '../../../page-object/GaragePage';
+import FuelExpensesPage from '../../../page-object/FuelExpensesPage';
+import HomePage from '../../../page-object/HomePage';
 
-describe('Test Adding Car', () => {
+describe('Test Adding Car and Fuel Expense', () => {
 
     beforeEach(() => {
         cy.visit('/', {
@@ -14,28 +14,34 @@ describe('Test Adding Car', () => {
     });
 
     it('should add a new car', () => {
-        login('12345asd@gmail.com', 'Aaa123aaa');
+        HomePage.login('12345asd@gmail.com', 'Aaa123aaa');
+
         const carDetails = {
             brand: 'Ford',
             model: 'Focus',
-            mileage: '500'
+            mileage: '500',
         };
 
         GaragePage.addCar(carDetails);
+        cy.get('li').contains('Ford Focus');
+
         cy.get('#userNavDropdown').click();
         cy.get('button').contains('Logout').click();
+        
     });
 
-
     it('should add fuel expense', () => {
-        login('12345asd@gmail.com', 'Aaa123aaa');
+        HomePage.login('12345asd@gmail.com', 'Aaa123aaa');
+        
         const expenseDetails = {
             mileage: '10',
             liters: '50',
-            totalCost: '1.20'
+            totalCost: '1.20',
         };
 
         FuelExpensesPage.addFuelExpense(expenseDetails);
+        cy.get('.panel-page_content').should('be.visible');
+
         cy.get('#userNavDropdown').click();
         cy.get('button').contains('Logout').click();
     });
