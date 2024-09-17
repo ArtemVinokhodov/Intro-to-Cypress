@@ -6,6 +6,7 @@ cypress/downloads/
 cypress/Cypress/Cypress.exe
 cypress/Cypress/browser_v8_context_snapshot.bin
 cypress/videos/
+cypress/reports/
 cypress/screenshots/
 cypress/fixtures/
 

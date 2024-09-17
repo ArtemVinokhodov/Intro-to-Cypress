@@ -1,4 +1,4 @@
-// cypress.config.js
+// cypress.config2.js
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
@@ -10,7 +10,7 @@ module.exports = defineConfig({
     json: true
   },
   e2e: {
-    baseUrl: 'https://qauto.forstudy.space',
+    baseUrl: 'https://qauto2.forstudy.space',
     video: true,
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
